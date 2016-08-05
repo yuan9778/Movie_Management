@@ -10,6 +10,9 @@ Movie Management is a local movie management system. It offers a GUI that can or
 **Platform:** windows but possibly Mac OX and Linux
 
 **Installation**
+
 1) Install Python 3.5+ from https://www.python.org/downloads/
+
 2) Install modules bs4 and requests by "pip install module"
+
 3) Download ffprobe at https://ffmpeg.zeranoe.com/builds/ and put ffprobe.exe in the same directory as your python source file.
