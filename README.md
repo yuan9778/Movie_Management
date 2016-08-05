@@ -13,7 +13,7 @@ Movie Management is a local movie management system. It offers a GUI that can or
 * tkinter for GUI
 * regex
 
-**Platform:** windows but possibly Mac OX and Linux
+**Platform:** Windows but possibly Mac OX and Linux
 
 **Installation:**
 
