@@ -1781,6 +1781,7 @@ video_format = ['3g2', '3gp', 'amv', 'asf', 'avi', 'drc', 'f4a', 'f4b', 'f4p', '
                 'mpeg', 'mpg', 'mpv', 'mxf', 'nsv', 'ogg', 'ogv', 'qt', 'rm', 'rmvb', 'roq', \
                 'svi', 'vob', 'webm', 'wmv', 'yuv']
 
+# create scan directory window widget but not display it
 start_frame = ttk.Frame(root)
 label_content = StringVar()
 label = ttk.Label(start_frame, textvariable=label_content)
@@ -1799,7 +1800,7 @@ newlist = []
 list_ret = []
 map_q = {} # list_ret index to movieDict title
 
-# which heading should be displayed in treeviewlist
+# default heading should be displayed in treeviewlist
 heading_display = ['title', 'genres', 'rating', 'director']
 
 # default sorting key
@@ -1808,17 +1809,19 @@ sorted_by = 'title'
 # search keywords
 keywords = ''
 
-# whether reverse the order of sorted_by when clicking header
+# reverse the order of sorted_by when clicking header
 is_reverse = False
 
 # whole database or just search result
 whole_db = True
 
+# no database yet
 if (os.path.exists('movies_db.json') == False):
     root.geometry('500x300')
     start_frame.grid()
     label.grid()
     scan_button.grid()
+# database available, create treelistview    
 else:
     create_treelistview()
 
