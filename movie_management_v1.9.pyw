@@ -7,7 +7,34 @@ from tkinter import filedialog, messagebox
 from operator import itemgetter
 import os, json, subprocess, shutil, requests, bs4, re, webbrowser, sys
 
+def duration2(filename):
+    pipe = subprocess.Popen(["ffprobe", filename], stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
+    length = ''    
 
+    for x in pipe.stdout.readlines():
+        try:
+            decoded = str(x)
+            if "Duration" in decoded:
+                length = decoded
+                break
+        except:
+            return 0
+    if length =='':
+        return 0
+
+    regex = re.compile(r'Duration: (\d\d):(\d\d):(\d\d).\d\d')
+    mo = regex.search(length)
+    if mo != None:
+        hours = int(mo.group(1))
+        mins = int(mo.group(2))
+        second = int(mo.group(3))
+        if second >= 30:
+            second = 1
+        else:
+            second = 0
+        return hours*60 + mins + second
+    else:
+        return 0
 
 def duration(filename):
     pipe = subprocess.Popen(["ffprobe", filename], stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
